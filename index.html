@@ -1,513 +1,218 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة التعليم التفاعلي - الأقسام والعناصر التعليمية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --light-color: #ecf0f1;
-            --dark-color: #2c3e50;
-        }
-        
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* الشريط العلوي */
-        .top-header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 10px 0;
-            position: relative;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-        }
-        
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .logo-img {
-            height: 40px;
-            width: auto;
-            transition: all 0.3s;
-        }
-        
-        .site-title {
-            font-size: 1.2rem;
-            font-weight: 500;
-            margin: 0;
-        }
-        
-        .menu-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            padding: 5px;
-        }
-        
-        .side-menu {
-            position: fixed;
-            top: 0;
-            right: -320px;
-            width: 280px;
-            height: 100vh;
-            background-color: white;
-            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-            transition: right 0.3s ease;
-            padding: 20px;
-        }
-        
-        .side-menu.show {
-            right: 0;
-        }
-        
-        .side-menu-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .close-btn {
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        
-        .menu-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .menu-links li {
-            margin-bottom: 15px;
-        }
-        
-        .menu-links a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-size: 18px;
-            display: block;
-            padding: 8px 0;
-            transition: color 0.3s;
-        }
-        
-        .menu-links a:hover {
-            color: var(--secondary-color);
-        }
-        
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            z-index: 999;
-            display: none;
-        }
-        
-        .overlay.show {
-            display: block;
-        }
-        
-        /* أقسام الموقع الجديدة */
-        .section-title {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 10px;
-            margin-top: 30px;
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
-        
-        .category-section {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
-        }
-        
-        .category-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .category-name {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-        
-        .view-all {
-            color: var(--secondary-color);
-            text-decoration: none;
-            font-size: 16px;
-        }
-        
-        .items-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .item-card {
-            background: var(--light-color);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .item-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .item-img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-        
-        .item-content {
-            padding: 15px;
-        }
-        
-        .item-title {
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
-        
-        .item-desc {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 15px;
-        }
-        
-        .item-link {
-            display: inline-block;
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 14px;
-            transition: background-color 0.3s;
-        }
-        
-        .item-link:hover {
-            background-color: #2980b9;
-        }
-        
-        .horizontal-items {
-            display: flex;
-            overflow-x: auto;
-            gap: 15px;
-            padding-bottom: 10px;
-            scrollbar-width: thin;
-        }
-        
-        .horizontal-item {
-            min-width: 200px;
-            background: var(--light-color);
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .horizontal-item .item-title {
-            font-size: 16px;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            background-color: var(--primary-color);
-            color: white;
-            margin-top: 50px;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .footer-link {
-            color: white;
-            text-decoration: none;
-            padding: 8px 15px;
-            border: 1px solid white;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-link:hover {
-            background-color: white;
-            color: var(--primary-color);
-        }
-        
-        .copyright {
-            margin-top: 15px;
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        @media (max-width: 768px) {
-            .items-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            }
-            
-            .logo-img {
-                height: 35px;
-            }
-            
-            .site-title {
-                font-size: 1rem;
-            }
-            
-            .footer-links {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .category-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مواقعي الإلكترونية</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap">
+  <style>
+    :root {
+      --primary-color: #2563eb;
+      --primary-hover: #1d4ed8;
+      --text-color: #1e293b;
+      --text-light: #64748b;
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      background-color: var(--card-bg);
+      box-shadow: var(--shadow);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      height: 40px;
+      width: auto;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin: 30px 0 20px;
+      color: var(--text-color);
+      position: relative;
+      padding-right: 15px;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: -8px;
+      width: 50px;
+      height: 3px;
+      background-color: var(--primary-color);
+      border-radius: 3px;
+    }
+
+    .section {
+      padding: 20px 0 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 25px;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: var(--primary-color);
+    }
+
+    .card-title {
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text-color);
+    }
+
+    .card-link {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 8px 20px;
+      background-color: var(--primary-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .card-link:hover {
+      background-color: var(--primary-hover);
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 15px;
+      }
+      
+      .card {
+        padding: 20px 15px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- الشريط العلوي -->
-    <header class="top-header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo-container">
-                    <img src="https://via.placeholder.com/40x40" alt="منصة التعليم التفاعلي" class="logo-img">
-                    <h1 class="site-title">منصة التعليم التفاعلي</h1>
-                </div>
-                
-                <button class="menu-btn" onclick="toggleMenu()">☰</button>
-            </div>
-        </div>
-    </header>
-    
-    <!-- القائمة الجانبية -->
-    <div class="overlay" id="overlay"></div>
-    
-    <div class="side-menu" id="sideMenu">
-        <div class="side-menu-header">
-            <h3>القائمة الرئيسية</h3>
-            <button class="close-btn" onclick="toggleMenu()">×</button>
-        </div>
-        <ul class="menu-links">
-            <li><a href="#">الصفحة الرئيسية</a></li>
-            <li><a href="#">الأقسام التعليمية</a></li>
-            <li><a href="#">الدورات التدريبية</a></li>
-            <li><a href="#">المكتبة الرقمية</a></li>
-            <li><a href="#">تواصل معنا</a></li>
-        </ul>
-    </div>
-    
-    <!-- المحتوى الرئيسي -->
-    <div class="container">
-        <h2 class="section-title">الأقسام التعليمية</h2>
-        
-        <!-- قسم مع 4 عناصر -->
-        <section class="category-section">
-            <div class="category-header">
-                <h3 class="category-name">العلوم الأساسية</h3>
-                <a href="#" class="view-all">عرض الكل</a>
-            </div>
-            
-            <div class="items-grid">
-                <div class="item-card">
-                    <img src="https://via.placeholder.com/300x150?text=الرياضيات" alt="الرياضيات" class="item-img">
-                    <div class="item-content">
-                        <h4 class="item-title">الرياضيات الأساسية</h4>
-                        <p class="item-desc">تعلم أساسيات الرياضيات من الصفر وحتى المستوى المتقدم</p>
-                        <a href="https://example.com/math" class="item-link" target="_blank">الدخول للدورة</a>
-                    </div>
-                </div>
-                
-                <div class="item-card">
-                    <img src="https://via.placeholder.com/300x150?text=الفيزياء" alt="الفيزياء" class="item-img">
-                    <div class="item-content">
-                        <h4 class="item-title">مبادئ الفيزياء</h4>
-                        <p class="item-desc">استكشف قوانين الفيزياء وتطبيقاتها في الحياة اليومية</p>
-                        <a href="https://example.com/physics" class="item-link" target="_blank">الدخول للدورة</a>
-                    </div>
-                </div>
-                
-                <div class="item-card">
-                    <img src="https://via.placeholder.com/300x150?text=الكيمياء" alt="الكيمياء" class="item-img">
-                    <div class="item-content">
-                        <h4 class="item-title">الكيمياء العامة</h4>
-                        <p class="item-desc">تعرف على العناصر والتفاعلات الكيميائية الأساسية</p>
-                        <a href="https://example.com/chemistry" class="item-link" target="_blank">الدخول للدورة</a>
-                    </div>
-                </div>
-                
-                <div class="item-card">
-                    <img src="https://via.placeholder.com/300x150?text=الأحياء" alt="الأحياء" class="item-img">
-                    <div class="item-content">
-                        <h4 class="item-title">علم الأحياء</h4>
-                        <p class="item-desc">اكتشف عالم الكائنات الحية وتركيبها ووظائفها</p>
-                        <a href="https://example.com/biology" class="item-link" target="_blank">الدخول للدورة</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- قسم مع 4 عناصر -->
-        <section class="category-section">
-            <div class="category-header">
-                <h3 class="category-name">اللغات</h3>
-                <a href="#" class="view-all">عرض الكل</a>
-            </div>
-            
-            <div class="items-grid">
-                <div class="item-card">
-                    <img src="https://via.placeholder.com/300x150?text=العربية" alt="العربية" class="item-img">
-                    <div class="item-content">
-                        <h4 class="item-title">قواعد اللغة العربية</h4>
-                        <p class="item-desc">إتقان قواعد النحو والصرف والإملاء العربية</p>
-                        <a href="https://example.com/arabic" class="item-link" target="_blank">الدخول للدورة</a>
-                    </div>
-                </div>
-                
-                <div class="item-card">
-                    <img src="https://via.placeholder.com/300x150?text=الإنجليزية" alt="الإنجليزية" class="item-img">
-                    <div class="item-content">
-                        <h4 class="item-title">الإنجليزية للمبتدئين</h4>
-                        <p class="item-desc">تعلم الإنجليزية من الصفر وحتى المستوى المتوسط</p>
-                        <a href="https://example.com/english" class="item-link" target="_blank">الدخول للدورة</a>
-                    </div>
-                </div>
-                
-                <div class="item-card">
-                    <img src="https://via.placeholder.com/300x150?text=الفرنسية" alt="الفرنسية" class="item-img">
-                    <div class="item-content">
-                        <h4 class="item-title">الفرنسية الأساسية</h4>
-                        <p class="item-desc">تعلم أساسيات اللغة الفرنسية بسهولة</p>
-                        <a href="https://example.com/french" class="item-link" target="_blank">الدخول للدورة</a>
-                    </div>
-                </div>
-                
-                <div class="item-card">
-                    <img src="https://via.placeholder.com/300x150?text=الألمانية" alt="الألمانية" class="item-img">
-                    <div class="item-content">
-                        <h4 class="item-title">الألمانية للمسافرين</h4>
-                        <p class="item-desc">عبارات وجمل مفيدة للمسافرين إلى ألمانيا</p>
-                        <a href="https://example.com/german" class="item-link" target="_blank">الدخول للدورة</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- قسم ب 5 عناصر أفقية -->
-        <h2 class="section-title">أحدث الدورات</h2>
-        
-        <section class="category-section">
-            <div class="horizontal-items">
-                <div class="horizontal-item">
-                    <h4 class="item-title">برمجة Python</h4>
-                    <p class="item-desc">تعلم البرمجة بلغة Python من الصفر</p>
-                    <a href="https://example.com/python" class="item-link" target="_blank">الدخول</a>
-                </div>
-                
-                <div class="horizontal-item">
-                    <h4 class="item-title">تصميم الجرافيك</h4>
-                    <p class="item-desc">أساسيات التصميم باستخدام Adobe Photoshop</p>
-                    <a href="https://example.com/graphic" class="item-link" target="_blank">الدخول</a>
-                </div>
-                
-                <div class="horizontal-item">
-                    <h4 class="item-title">التسويق الرقمي</h4>
-                    <p class="item-desc">استراتيجيات التسويق عبر وسائل التواصل</p>
-                    <a href="https://example.com/marketing" class="item-link" target="_blank">الدخول</a>
-                </div>
-                
-                <div class="horizontal-item">
-                    <h4 class="item-title">الذكاء الاصطناعي</h4>
-                    <p class="item-desc">مقدمة في تعلم الآلة والذكاء الاصطناعي</p>
-                    <a href="https://example.com/ai" class="item-link" target="_blank">الدخول</a>
-                </div>
-                
-                <div class="horizontal-item">
-                    <h4 class="item-title">ريادة الأعمال</h4>
-                    <p class="item-desc">كيف تبدأ مشروعك الخاص وتديره بنجاح</p>
-                    <a href="https://example.com/entrepreneurship" class="item-link" target="_blank">الدخول</a>
-                </div>
-            </div>
-        </section>
-    </div>
-    
-    <footer>
-        <div class="container">
-            <div class="footer-links">
-                <a href="#" class="footer-link">عن المنصة</a>
-                <a href="#" class="footer-link">سياسة الخصوصية</a>
-                <a href="#" class="footer-link">الشروط والأحكام</a>
-                <a href="#" class="footer-link">تواصل معنا</a>
-            </div>
-            <p class="copyright"> جاسم الفارسي - جميع الحقوق محفوظة © 2025 </p>
-        </div>
-    </footer>
 
-    <script>
-        // إدارة القائمة الجانبية
-        function toggleMenu() {
-            document.getElementById("sideMenu").classList.toggle("show");
-            document.getElementById("overlay").classList.toggle("show");
+  <header>
+    <div class="container header-content">
+      <img src="https://github.com/qmsweb/aswat/raw/main/images/__%D8%AC%D8%A7%D8%B3%D9%85%20%D8%A7%D9%84%D9%81%D8%A7%D8%B1%D8%B3%D9%8A%20%D8%A7%D9%94%D8%B3%D9%88%D8%AF_.png" alt="شعار الموقع" class="logo">
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <h2>مشاريعي الخاصة</h2>
+      <div class="grid" id="personal-sites"></div>
+    </section>
+
+    <section class="section">
+      <h2>مشاريع مشتركة</h2>
+      <div class="grid" id="business-sites"></div>
+    </section>
+  </main>
+
+  <script>
+    const siteData = {
+      personal: [
+        { 
+          name: "مدونتي الشخصية", 
+          url: "https://www.jassim.one",
+          icon: "📝"
+        },
+        { 
+          name: "بوابة الاختبارات", 
+          url: "https://exam.jassim.one",
+          icon: "📚"
         }
-        
-        // إغلاق القائمة عند النقر على overlay
-        document.getElementById("overlay").addEventListener("click", toggleMenu);
-        
-        // يمكن إضافة المزيد من الوظائف هنا حسب الحاجة
-    </script>
+      ],
+      business: [
+        { 
+          name: "رحلة المتنبي", 
+          url: "https://www.motanabi.com",
+          icon: "✒️"
+        },
+        { 
+          name: "أداة الصوامت العربية", 
+          url: "https://aswt.jassim.one",
+          icon: "🔊"
+        }
+      ]
+    };
+
+    function createCard(site) {
+      return `
+        <div class="card">
+          <div class="card-icon">${site.icon || '🌐'}</div>
+          <h3 class="card-title">${site.name}</h3>
+          <a href="${site.url}" target="_blank" rel="noopener noreferrer" class="card-link">
+            زيارة الموقع
+          </a>
+        </div>
+      `;
+    }
+
+    function renderSites() {
+      const personalContainer = document.getElementById('personal-sites');
+      const businessContainer = document.getElementById('business-sites');
+      
+      personalContainer.innerHTML = siteData.personal.map(createCard).join('');
+      businessContainer.innerHTML = siteData.business.map(createCard).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', renderSites);
+  </script>
+
 </body>
 </html>
