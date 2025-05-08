@@ -1,218 +1,570 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>جاسم بلاتفورمز</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap">
-  <style>
-    :root {
-      --primary-color: #2563eb;
-      --primary-hover: #1d4ed8;
-      --text-color: #1e293b;
-      --text-light: #64748b;
-      --bg-color: #f8fafc;
-      --card-bg: #ffffff;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --transition: all 0.3s ease;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Tajawal', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.6;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    header {
-      background-color: var(--card-bg);
-      box-shadow: var(--shadow);
-      padding: 15px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      height: 40px;
-      width: auto;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-      margin: 30px 0 20px;
-      color: var(--text-color);
-      position: relative;
-      padding-right: 15px;
-    }
-
-    h2::after {
-      content: '';
-      position: absolute;
-      right: 0;
-      bottom: -8px;
-      width: 50px;
-      height: 3px;
-      background-color: var(--primary-color);
-      border-radius: 3px;
-    }
-
-    .section {
-      padding: 20px 0 40px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 25px;
-    }
-
-    .card {
-      background-color: var(--card-bg);
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-      padding: 25px;
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      border: 1px solid rgba(0, 0, 0, 0.05);
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    }
-
-    .card-icon {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-      color: var(--primary-color);
-    }
-
-    .card-title {
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: var(--text-color);
-    }
-
-    .card-link {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 8px 20px;
-      background-color: var(--primary-color);
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: 500;
-      transition: var(--transition);
-    }
-
-    .card-link:hover {
-      background-color: var(--primary-hover);
-    }
-
-    @media (max-width: 768px) {
-      .grid {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-        gap: 15px;
-      }
-      
-      .card {
-        padding: 20px 15px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جاسم بلاتفورمز</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Beiruti:wght@200..900&family=Markazi+Text:wght@400..700&family=Readex+Pro:wght@160..700&family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6C5CE7;
+            --secondary: #00CEFF;
+            --dark: #2D3436;
+            --light: #F5F6FA;
+            --accent: #FD79A8;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            font-family: 'Readex Pro', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* التصميم العام */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        /* الهيدر */
+        .main-header {
+            background: var(--gradient);
+            padding: 40px 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.3);
+        }
+        
+        .main-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('assets/icons/pattern.svg') repeat;
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        .main-logo {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .main-logo img {
+            max-width: 180px;
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+        }
+        
+        .main-logo h1 {
+            font-family: 'Zain', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+        }
+        
+        .main-logo p {
+            font-family: 'Markazi Text', serif;
+            font-size: 1.8rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* شريط الشعارات */
+        .partners-section {
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .partners-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(108, 92, 231, 0.5), transparent);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-family: 'Beiruti', sans-serif;
+            font-size: 2.8rem;
+            color: var(--primary);
+            display: inline-block;
+            position: relative;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 3px;
+        }
+        
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .slider-track {
+            display: flex;
+            gap: 60px;
+            animation: scroll 25s linear infinite;
+            width: calc(180px * 8);
+        }
+        
+        .slide {
+            flex: 0 0 auto;
+            transition: all 0.4s ease;
+        }
+        
+        .slide img {
+            width: 160px;
+            height: 90px;
+            object-fit: contain;
+            filter: grayscale(100%) brightness(0.8);
+            opacity: 0.8;
+            transition: all 0.4s ease;
+        }
+        
+        .slide:hover img {
+            filter: grayscale(0%) brightness(1);
+            opacity: 1;
+            transform: scale(1.1) rotate(-2deg);
+        }
+        
+        /* قسم المواقع */
+        .websites-section {
+            padding: 100px 0;
+            background: url('assets/icons/bg-pattern.png') repeat;
+            background-size: 400px;
+            background-attachment: fixed;
+            background-color: white;
+        }
+        
+        .websites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .website-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .website-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+        
+        .website-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        }
+        
+        .website-card:hover::before {
+            opacity: 0.1;
+        }
+        
+        .card-header {
+            height: 180px;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent 60%, rgba(0, 0, 0, 0.05));
+        }
+        
+        .website-icon {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+            transition: all 0.4s ease;
+        }
+        
+        .website-card:hover .website-icon {
+            transform: scale(1.1) rotate(5deg);
+            filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.15));
+        }
+        
+        .card-body {
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .website-title {
+            font-family: 'Zain', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .website-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.4s ease;
+        }
+        
+        .website-card:hover .website-title::after {
+            width: 100%;
+        }
+        
+        .website-desc {
+            font-family: 'Markazi Text', serif;
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .visit-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+        }
+        
+        .visit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.4);
+        }
+        
+        /* الفوتر */
+        .main-footer {
+            background: var(--dark);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            font-family: 'Readex Pro', sans-serif;
+        }
+        
+        .footer-text {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+        
+        /* الرسوم المتحركة */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-180px * 4)); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* التكيف مع الأجهزة المحمولة */
+        @media (max-width: 992px) {
+            .main-logo h1 {
+                font-size: 2.8rem;
+            }
+            
+            .main-logo p {
+                font-size: 1.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.3rem;
+            }
+            
+            .websites-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .main-logo h1 {
+                font-size: 2.2rem;
+            }
+            
+            .main-logo p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .slide img {
+                width: 120px;
+                height: 70px;
+            }
+            
+            .card-header {
+                height: 150px;
+            }
+            
+            .website-icon {
+                width: 80px;
+                height: 80px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .main-logo h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .websites-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-
-  <header>
-    <div class="container header-content">
-      <img src="https://github.com/qmsweb/aswat/raw/main/images/__%D8%AC%D8%A7%D8%B3%D9%85%20%D8%A7%D9%84%D9%81%D8%A7%D8%B1%D8%B3%D9%8A%20%D8%A7%D9%94%D8%B3%D9%88%D8%AF_.png" alt="شعار الموقع" class="logo">
-    </div>
-  </header>
-
-  <main class="container">
-    <section class="section">
-      <h2>مشاريعي الخاصة</h2>
-      <div class="grid" id="personal-sites"></div>
-    </section>
-
-    <section class="section">
-      <h2>مشاريع مشتركة</h2>
-      <div class="grid" id="business-sites"></div>
-    </section>
-  </main>
-
-  <script>
-    const siteData = {
-      personal: [
-        { 
-          name: "مدونتي الشخصية", 
-          url: "https://www.jassim.one",
-          icon: "📝"
-        },
-        { 
-          name: "بوابة الاختبارات", 
-          url: "https://exam.jassim.one",
-          icon: "📚"
-        }
-      ],
-      business: [
-        { 
-          name: "رحلة المتنبي", 
-          url: "https://www.motanabi.com",
-          icon: "✒️"
-        },
-        { 
-          name: "أداة الصوامت العربية", 
-          url: "https://aswt.jassim.one",
-          icon: "🔊"
-        }
-      ]
-    };
-
-    function createCard(site) {
-      return `
-        <div class="card">
-          <div class="card-icon">${site.icon || '🌐'}</div>
-          <h3 class="card-title">${site.name}</h3>
-          <a href="${site.url}" target="_blank" rel="noopener noreferrer" class="card-link">
-            زيارة الموقع
-          </a>
+    <!-- الهيدر -->
+    <header class="main-header">
+        <div class="container">
+            <div class="main-logo">
+                <img src="assets/icons/logo.png" alt="جاسم الفارسي">
+                <h1>منصّاتي</h1>
+                <p>اكتشف مجموعة مواقعي التي تقدم محتوى فريدًا في مختلف المجالات</p>
+            </div>
         </div>
-      `;
-    }
-
-    function renderSites() {
-      const personalContainer = document.getElementById('personal-sites');
-      const businessContainer = document.getElementById('business-sites');
-      
-      personalContainer.innerHTML = siteData.personal.map(createCard).join('');
-      businessContainer.innerHTML = siteData.business.map(createCard).join('');
-    }
-
-    document.addEventListener('DOMContentLoaded', renderSites);
-  </script>
-
+    </header>
+    
+    <!-- شريط الشعارات -->
+    <section class="partners-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>مواقعي الأخرى</h2>
+            </div>
+            <div class="slider-container">
+                <div class="slider-track">
+                    <div class="slide">
+                        <img src="assets/icons/P1.png" alt="شريك 1">
+                    </div>
+                    <div class="slide">
+                        <img src="assets/icons/P2.png" alt="شريك 2">
+                    </div>
+                    <div class="slide">
+                        <img src="assets/icons/P3.png" alt="شريك 3">
+                    </div>
+                    <div class="slide">
+                        <img src="assets/icons/P4.png" alt="شريك 4">
+                    </div>
+                    <!-- تكرار الشعارات لحركة متواصلة -->
+                    <div class="slide">
+                        <img src="assets/icons/P1.png" alt= "1">
+                    </div>
+                    <div class="slide">
+                        <img src="assets/icons/P2.png" alt="2">
+                    </div>
+                    <div class="slide">
+                        <img src="assets/icons/P3.png" alt="3">
+                    </div>
+                    <div class="slide">
+                        <img src="assets/icons/P4.png" alt="4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- قسم المواقع -->
+    <section class="websites-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>استكشف مواقعي</h2>
+            </div>
+            <div class="websites-grid">
+                <!-- الموقع 1 -->
+                <div class="website-card">
+                    <div class="card-header">
+                        <img src="assets/icons/motanabi.png" alt="رحلة المتنبي" class="website-icon">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="website-title">رحلة المتنبي</h3>
+                        <p class="website-desc">منصة إلكترونية من برمجتي بالشراكة مع عدة زملاء</p>
+                        <a href="https://www.motanabi.com" class="visit-btn" target="_blank">زيارة الموقع</a>
+                    </div>
+                </div>
+                
+                <!-- الموقع 2 -->
+                <div class="website-card">
+                    <div class="card-header">
+                        <img src="assets/icons/bawaba.png" alt="بوابة الاختبارات" class="website-icon">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="website-title">بوابة الاختبارات</h3>
+                                                <p class="website-desc">منصة مجانيّة تقدم محتوى يهم طلبة بكالوريوس اللغة العربية وآدابها</p>
+                        <a href="https://exam.jassim.one" class="visit-btn" target="_blank">زيارة الموقع</a>
+                    </div>
+                </div>
+                
+                <!-- الموقع 3 -->
+                <div class="website-card">
+                    <div class="card-header">
+                        <img src="assets/icons/swamet.png" alt="صوامت" class="website-icon">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="website-title">أداة صوامت</h3>
+                        <p class="website-desc">أداة موجهة لطلبة علم الأصوات</p>
+                        <a href="https://aswt.jassim.one" class="visit-btn" target="_blank">زيارة الموقع</a>
+                    </div>
+                </div>
+                
+                <!-- الموقع 4 -->
+                <div class="website-card">
+                    <div class="card-header">
+                        <img src="assets/icons/myweb.png" alt="جاسم الفارسي" class="website-icon">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="website-title">موقعي الشخصي</h3>
+                        <a href="https://www.jassim.one" class="visit-btn" target="_blank">زيارة الموقع</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- الفوتر -->
+    <footer class="main-footer">
+        <div class="container">
+            <p class="footer-text">© 2023 جميع الحقوق محفوظة | تصميم وتطوير <a href="#" style="color: var(--secondary); text-decoration: none;">اسمك</a></p>
+        </div>
+    </footer>
+    
+    <script>
+        // تأثيرات تفاعلية
+        document.addEventListener('DOMContentLoaded', function() {
+            // إضافة تأثير الطفو للأيقونات
+            const icons = document.querySelectorAll('.website-icon');
+            icons.forEach(icon => {
+                icon.addEventListener('mouseenter', function() {
+                    this.style.animation = 'float 1.5s ease-in-out infinite';
+                });
+                
+                icon.addEventListener('mouseleave', function() {
+                    this.style.animation = 'none';
+                });
+            });
+            
+            // إيقاف حركة الشريط عند التحويم
+            const sliderTrack = document.querySelector('.slider-track');
+            sliderTrack.addEventListener('mouseenter', function() {
+                this.style.animationPlayState = 'paused';
+            });
+            
+            sliderTrack.addEventListener('mouseleave', function() {
+                this.style.animationPlayState = 'running';
+            });
+            
+            // تأثيرات عند التمرير
+            const animateOnScroll = function() {
+                const cards = document.querySelectorAll('.website-card');
+                cards.forEach((card, index) => {
+                    const cardPosition = card.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if (cardPosition < screenPosition) {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // تهيئة العناصر قبل الظهور
+            const cards = document.querySelectorAll('.website-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = `all 0.5s ease ${index * 0.1}s`;
+            });
+            
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // تشغيلها مرة عند التحميل
+        });
+    </script>
 </body>
 </html>
